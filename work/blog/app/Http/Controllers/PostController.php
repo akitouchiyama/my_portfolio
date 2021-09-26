@@ -21,5 +21,15 @@ class PostController extends Controller
     {
         return view('create');
     }
+    
+    public function store(Post $post, Request $request)
+    {
+        // post配列を変数に入れる
+        $input = $request['post'];
+        // postインスタンスに入力値を埋めて、保存する(=SQLのinsert文)
+        $post->fill($input)->save();
+        // 記事詳細画面にリダイレクト
+        return redirect ('/posts/' . $post->id);
+    }
 }
 ?>

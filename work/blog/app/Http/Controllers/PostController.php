@@ -31,5 +31,10 @@ class PostController extends Controller
         // 記事詳細画面にリダイレクト
         return redirect ('/posts/' . $post->id);
     }
+    
+    public function edit(Post $post)
+    {
+        return view('edit')->with(['post' => $post]);
+    }
 }
 ?>
